@@ -6,13 +6,7 @@ import morgan from "morgan";
 import { globalError } from "../utils/errorHandling.js";
 import cors from "cors";
 const bootstrap = (app, express) => {
-  app.use((req, res, next) => {
-    if (req.originalUrl == "/order/webhook") {
-      next();
-    } else {
-      express.json()(req, res, next);
-    }
-  });
+  app.use(express.json())
   // Setup cors
   app.use(cors());
   // morgan check error
